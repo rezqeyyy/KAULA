@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 05 Jan 2025 pada 18.01
+-- Waktu pembuatan: 10 Jan 2025 pada 16.29
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.2.12
 
@@ -41,7 +41,12 @@ CREATE TABLE `attendance` (
 
 INSERT INTO `attendance` (`id`, `nama_kapster`, `status`, `date`, `created_at`) VALUES
 (1, 'asan', 'hadir', '2025-01-05', '2025-01-05 16:41:54'),
-(2, '', 'hadir', '2025-01-05', '2025-01-05 16:54:48');
+(2, '', 'hadir', '2025-01-05', '2025-01-05 16:54:48'),
+(3, 'asan', 'hadir', '2025-01-06', '2025-01-05 11:04:20'),
+(4, 'user', 'hadir', '2025-01-06', '2025-01-05 11:06:05'),
+(5, 'Wildan', 'hadir', '2025-01-06', '2025-01-05 22:39:09'),
+(6, 'Firman', 'hadir', '2025-01-06', '2025-01-06 04:42:20'),
+(7, 'asan', 'hadir', '2025-01-07', '2025-01-07 03:49:05');
 
 -- --------------------------------------------------------
 
@@ -66,19 +71,8 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id`, `nama_kapster`, `jenis_treatment`, `harga`, `produk`, `created_at`, `quantity`, `product_price`, `total_price`) VALUES
-(1, 'asep', 'Special Service', 50000.00, 'Oil Based', '2025-01-04 13:43:52', 1, 65000.00, 65000.00),
-(2, 'asep', 'Shaving', 10000.00, 'Hair Tonic', '2025-01-04 13:44:02', 1, 25000.00, 25000.00),
-(3, 'asep', 'Shaving', 10000.00, 'Hair Tonic', '2025-01-04 13:48:25', 1, 25000.00, 25000.00),
-(4, 'tatang', 'Special Service', 50000.00, 'Matte Clay', '2025-01-04 13:55:25', 8, 60000.00, 480000.00),
-(5, 'tatang', 'Colouring Basic', 50000.00, 'Matte Clay', '2025-01-04 13:56:08', 2, 60000.00, 120000.00),
-(6, 'tatang', 'Colouring Basic', 60000.00, 'Matte Clay', '2025-01-04 13:56:48', 1, 60000.00, 60000.00),
-(7, 'hahehe', 'Colouring Basic', 50000.00, 'Water Based', '2025-01-04 14:22:28', 13, 60000.00, 780000.00),
-(8, 'tatang', 'Shaving', 10000.00, 'Oil Based', '2025-01-05 00:15:19', 2, 65000.00, 130000.00),
-(9, 'tatang', 'Shaving', 10000.00, 'Water Based', '2025-01-05 01:05:18', 1, 60000.00, 60000.00),
-(10, '', '', 0.00, '', '2025-01-05 15:01:12', 1, 0.00, 0.00),
-(11, 'asan', 'Shaving', 10000.00, 'Matte Clay', '2025-01-05 16:31:17', 1, 60000.00, 60000.00),
-(12, '', 'Shaving', 10000.00, 'Water Based', '2025-01-05 16:54:12', 1, 60000.00, 60000.00),
-(13, '', 'Shaving', 10000.00, 'Water Based', '2025-01-05 16:54:17', 1, 60000.00, 60000.00);
+(1, 'asan', 'Colouring Basic', 50000.00, 'Water Based', '2025-01-07 06:46:37', 1, 60000.00, 60000.00),
+(2, 'barber', 'Colouring Basic', 50000.00, 'Water Based', '2025-01-07 06:47:46', 1, 60000.00, 60000.00);
 
 -- --------------------------------------------------------
 
@@ -184,17 +178,23 @@ CREATE TABLE `users` (
   `username` varchar(50) NOT NULL,
   `nama_kapster` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `role` varchar(20) NOT NULL
+  `role` varchar(20) NOT NULL,
+  `is_active` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `users`
 --
 
-INSERT INTO `users` (`user_id`, `username`, `nama_kapster`, `password`, `role`) VALUES
-(1, 'user', 'user', '$2y$10$FcB0aIdTwAMsQjGH4dG0t.zBRa2e5U91AuZ/jp5rlsi/Hy/sKE1IC', 'kapster'),
-(2, 'user2', 'user2', '$2y$10$n1qdsVSnmoqg6fKDw4Go8uW0Z8WCj6vb17fuq4cveM4QMYy94vEey', 'admin'),
-(3, 'user3', 'asan', '$2y$10$R6YQcTsGIki1g/Gqb3xBZuI3O6Y.a0ko8Z8S8igx7n1B2VdnOO1re', 'kapster');
+INSERT INTO `users` (`user_id`, `username`, `nama_kapster`, `password`, `role`, `is_active`) VALUES
+(1, 'user', 'user', '$2y$10$FcB0aIdTwAMsQjGH4dG0t.zBRa2e5U91AuZ/jp5rlsi/Hy/sKE1IC', 'kapster', 0),
+(2, 'user2', 'user2', '$2y$10$n1qdsVSnmoqg6fKDw4Go8uW0Z8WCj6vb17fuq4cveM4QMYy94vEey', 'admin', 1),
+(3, 'user3', 'asan', '$2y$10$R6YQcTsGIki1g/Gqb3xBZuI3O6Y.a0ko8Z8S8igx7n1B2VdnOO1re', 'kapster', 1),
+(8, 'ranu', 'Ranu', '$2y$10$PUfwp3SX4m0QJS9JOPVZdOXbsb5afp983ZRog66N4pmqFLrJGUwMG', 'admin', 1),
+(9, 'easybutterx', 'Asan', '$2y$10$TuBzYVdEc58kwwyaXzZtFeSS.0aSPfQxIHakrVC1h5gzoYNjUrsCu', 'admin', 1),
+(10, 'ranui', 'Ranu', '$2y$10$wzuv8rD0fQuiBf4EKNE9aOpnzKpOgEdy3QVTRXTrVbJuiHKCP80Om', 'admin', 1),
+(11, 'barber', 'barber', '$2y$10$f5PLA7aVmfNpvprbwLk6DetLlrGwzm25rm23tY9kSlzvREZiBtYwe', 'kapster', 1),
+(12, 'dadang', 'dadang', '$2y$10$zMTDf0cqmTEPpKtB07wJaOJGTyGWwDG8.UPzxse1UbbB5CYB.SjdK', 'kapster', 1);
 
 --
 -- Indexes for dumped tables
@@ -251,13 +251,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT untuk tabel `attendance`
 --
 ALTER TABLE `attendance`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT untuk tabel `karyawan`
 --
 ALTER TABLE `karyawan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `products`
@@ -287,7 +287,7 @@ ALTER TABLE `shop_info`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
